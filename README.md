@@ -2,10 +2,13 @@
 
 It's a pretty simple and basic redis client, designed to be very fast and keep all code simple. 
 
+## How to install it?
+
+    npm install simple_redis_client
 
 ## How to use?
-    
-    var redisClient = require("simple_redis")
+        
+    var redisClient = require("simple_redis_client")
     var myClient = redisClient.createClient(6379,"127.0.0.1") 
     myClient.on("ready",function(){
         myClient.execute("set","hello","world",function(err){
