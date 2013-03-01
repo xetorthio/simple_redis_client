@@ -8,11 +8,13 @@
     "contributors": [ 
         {
             "name" : "Gabriel Eisbruch",
-            "email": "gabriel.eisbruch@mercadolibre.com"
+            "email": "gabriel.eisbruch@mercadolibre.com..com",
+            "web":"http://www.mercadolibre.com"
         },
         {
             "name" : "Marcos Lilljedahl",
-            "email": "marcos.lilljedahl@mercadolibre.com"
+            "email": "marcos.lilljedahl@mercadolibre.com",
+            "web":"http://www.mercadolibre.com"
         }    
     ],
     "engines": { "node":">= 0.6.19" },
