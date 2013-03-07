@@ -63,5 +63,30 @@ describe("Redis Client Test",function(){
                 })
            })
         })
+        it("It should run ok with errors",function(done){
+            client.execute("ERROR OP",10,function(err,data){
+                should.exist(err)
+                should.not.exist(data)
+                client.execute("set","test","hello",function(err){
+                   should.not.exist(err)
+                    client.execute("get","test",function(err,data){
+                        should.not.exist(err)
+                        should.exist(data)
+                        data.toString().should.equal("hello")
+                        client.execute("ERROR OP",10,function(err,data){
+                            should.exist(err)
+                            should.not.exist(data)
+                             client.execute("get","test",function(err,data){
+                                should.not.exist(err)
+                                should.exist(data)
+                                data.toString().should.equal("hello")
+                                done()
+                             })
+                        })
+                     })
+                })
+
+            })
+        })
     })
 })
