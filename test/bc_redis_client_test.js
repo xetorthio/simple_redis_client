@@ -18,12 +18,14 @@ describe("Redis Client Test",function(){
     it("should emit connect on client connected",function(done){
         var client = redisClient.createClient(redisConf.port,redisConf.host)
         client.on("connect",function(){
+            client.quit()
             done()
         })
     })
     it("should emit ready on client connected",function(done){
         var client = redisClient.createClient(redisConf.port,redisConf.host)
         client.on("ready",function(){
+            client.quit()
             done()
         })
     })
@@ -31,6 +33,9 @@ describe("Redis Client Test",function(){
         var client
         before(function(done){
             client = redisClient.createClient(redisConf.port,redisConf.host)
+            client.on("error",function(err){
+                done(err)
+            })
             client.on("ready",function(){
                 client.execute("FLUSHALL",function(err){
                     should.not.exist(err) 
