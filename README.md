@@ -34,3 +34,7 @@ It's a pretty simple and basic redis client, designed to be very fast and keep a
         connectTimeout:  Number (It's the time before emit an error while the connection is creating, default: undefined),
     }
 
+## Benchmarks
+
+    npm install metrics
+    node multi_bench.js
