@@ -1,7 +1,7 @@
 {
     "name": "simple_redis_client",
     "description": "",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "author": "Mercadolibre Architecture Team",
     "main":"index",
     "keywords":["simple","redis","client","fast","buffers","buffer"],

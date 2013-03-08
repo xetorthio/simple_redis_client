@@ -33,6 +33,24 @@ It's a pretty simple and basic redis client, designed to be very fast and keep a
         recheck_time: Number (If a disconnect occurs, It's the time in miliseconds between recoinnect tries, default: 1000),
         connectTimeout:  Number (It's the time before emit an error while the connection is creating, default: undefined),
     }
+## Pub/Sub
+    var redisClient = require("simple_redis_client")
+    var pub = redisClient.createClient(6379,"127.0.0.1") 
+    var sub = redisClient.createClient(6379,"127.0.0.1") 
+    sub.on("message",function(channel, message){
+        console.log("My Channel: "+channel+", My message: "+message)
+    })
+    sub.on("pmessage",function(pattern, channel, message){
+        console.log("My pattern: "+pattern+", My channel: "+channel+", My message: "+message)
+    })
+
+    //On clients ready
+    sub.execute("SUBSCRIBE","test",function(err){
+        sub.execute("PSUBSCRIBE","t*",function(err){
+            sub.execute("PUBLISH","test","test message",function(err){
+            })
+        })
+    })
 
 ## Benchmarks
 
