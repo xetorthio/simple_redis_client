@@ -91,6 +91,17 @@ describe("Redis Client Test",function(){
 
             })
         })
+        it("should enable run commands without callback",function(done){
+            client.execute("set","test","test-no-callback")
+            setTimeout(function(){
+                client.execute("get","test",function(err,data){
+                    should.not.exist(err)
+                    should.exist(data)
+                    data.toString().should.equal("test-no-callback")
+                    done()
+                })
+            },100)
+        })
     })
     describe("Pub / Sub",function(){
         var pub,sub
